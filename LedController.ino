@@ -26,14 +26,14 @@
 // GPIO15 -> D8
 // GPIO16 -> D0
 
-#define STRIPEPIN 0 //GPIO0 -> D4=3
-#define MQTT_CONN_KEEPALIVE 300
+#define STRIPEPIN 0 //GPIO0 -> Pin D3
+#define MQTT_CONN_KEEPALIVE 300 // Some MQTT Broker might require lower keepalive timings
 #define NUM_LEDS 72
 
 const char* host = "TestMqttClient01"; // REPLACE UNIQUE ID! MUST BE CHANGED FOR EVERY CLIENT!
-String Topic = "TopicLevel1/TopicLevel2/";
-const int port = 80;
-const char* updatePath = "/firmware";
+String Topic = "TopicLevel1/TopicLevel2/"; // Adjust Topics for your own needs
+const int port = 80; // Since no other https server is running port 80 can be used 
+const char* updatePath = "/firmware"; // Can be left empty, since no other https server is running
 const char* updateUsername = "fw_user";
 const char* updatePassword = "fw_pass";
 String BuildDateTime = __TIMESTAMP__;
@@ -41,7 +41,7 @@ String BuildDateTime = __TIMESTAMP__;
 const char* mqttServer = "192.168.0.1"; // REPLACE with your own MQTT server address
 uint16_t mqttPort = 1883; // REPLACE with your own MQTT server port
 
-ESP8266WebServer httpServer(port);
+ESP8266WebServer httpServer(port); 
 ESP8266HTTPUpdateServer httpUpdater;
 
 uint16_t ledCount = NUM_LEDS; // REPLACE with your actual number of leds
